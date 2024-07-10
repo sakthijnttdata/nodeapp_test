@@ -22,6 +22,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: user/app:latest
+          tags: sakthijeganathan982/test:latest
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
