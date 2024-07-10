@@ -18,16 +18,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: testdockerimage1/test
-      
       - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
-          context: .
+          context: "{{defaultContext}}:mysubdir"
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/test:1.0
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: user/app:latest
